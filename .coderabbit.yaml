@@ -1,0 +1,20 @@
+language: "pt"
+reviews:
+  high_level_summary: true
+path_filters:
+  - "!venv/**"
+  - "!__pycache__/**"
+  - "!*.db"
+path_instructions:
+  - path: "app/models.py"
+    instructions: |
+      Verifique se os modelos seguem PEP 8 e usam tipos apropriados do SQLAlchemy.
+      Confirme que `__tablename__` e índices estão definidos conforme necessidade.
+  - path: "app/schemas.py"
+    instructions: |
+      Garanta que os schemas usam Pydantic v2 e `from_attributes=True` nos modelos de resposta.
+      Valide `min_length` e `max_length` em campos de texto.
+  - path: "app/main.py"
+    instructions: |
+      Confirme que as rotas CRUD estão completas, com `tags=["Tasks"]` e códigos HTTP adequados.
+      Garanta criação de tabelas no evento de `startup`.
