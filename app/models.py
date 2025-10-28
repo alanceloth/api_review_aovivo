@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import Boolean, Column, DateTime, Integer, String
 
@@ -16,5 +16,4 @@ class Task(Base):
     title = Column(String(100), nullable=False, index=True)
     description = Column(String(500))
     completed = Column(Boolean, default=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
